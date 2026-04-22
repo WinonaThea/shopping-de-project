@@ -78,7 +78,8 @@ Airflow Orchestration
 
 The raw layer stores the ingested CSV data in PostgreSQL with minimal transformation.
 
-Main raw table: raw2.customer_shopping_trends
+Main raw table: 
+raw2.customer_shopping_trends
 
 2. Staging Layer
 
@@ -89,18 +90,18 @@ casting data types
 normalizing text values
 preparing data for downstream transformations
 
-Main staging model: analytics2.stg_customer_shopping_trends
+Main staging model: 
+analytics2.stg_customer_shopping_trends
 
 3. Mart Layer
 
 The mart layer provides analytics-ready outputs for reporting and dashboard use.
 
 Main mart models:
-
-analytics2.mart_sales_by_category
+analytics2.mart_sales_by_category and
 analytics2.mart_sales_by_location
 
---
+---
 ## Airflow Orchestration
 
 The pipeline is orchestrated using Airflow with the DAG:
@@ -119,7 +120,7 @@ schedule = None
 This means the pipeline is triggered manually for development and testing purposes.
 It can be easily changed to a scheduled DAG later.
 
---
+---
 ## Main Components
 ### Python Ingestion Script
 
@@ -160,7 +161,7 @@ mart views/tables
 
 Location: postgres/docker-compose.yml
 
---
+---
 ## Pipeline Execution Flow
 
 The pipeline is executed in the following order:
@@ -190,7 +191,7 @@ Airflow coordinates the order of execution using the DAG:
 
 shopping_pipeline
 
---
+---
 ## Outputs
 
 The pipeline produces the following outputs:
@@ -203,7 +204,7 @@ analytics2.stg_customer_shopping_trends
 analytics2.mart_sales_by_category
 analytics2.mart_sales_by_location
 
---
+---
 ## Screenshots
 ### Airflow DAG Run
 <img width="1600" height="825" alt="image" src="https://github.com/user-attachments/assets/25ad87b3-9dc8-472a-8317-8c738c7608b6" />
@@ -218,7 +219,7 @@ analytics2.mart_sales_by_location
 ### Visual Studio Code
 <img width="1373" height="790" alt="image" src="https://github.com/user-attachments/assets/9d344d9b-6b95-4212-a3db-3eb7d76542cd" />
 
---
+---
 ## What I Learned
 
 Through this project, I practiced:
