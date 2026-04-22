@@ -70,7 +70,7 @@ dbt Staging Model
 dbt Mart Models
    ↓
 Airflow Orchestration
-
+```
 ---
 ## Data Layers
 
