@@ -85,10 +85,10 @@ raw2.customer_shopping_trends
 
 The staging layer standardizes the raw data by:
 
-cleaning column names
-casting data types
-normalizing text values
-preparing data for downstream transformations
+- cleaning column names
+- casting data types
+- normalizing text values
+- preparing data for downstream transformations
 
 Main staging model: 
 analytics2.stg_customer_shopping_trends
@@ -98,8 +98,8 @@ analytics2.stg_customer_shopping_trends
 The mart layer provides analytics-ready outputs for reporting and dashboard use.
 
 Main mart models:
-analytics2.mart_sales_by_category and
-analytics2.mart_sales_by_location
+- analytics2.mart_sales_by_category 
+- analytics2.mart_sales_by_location
 
 ---
 ## Airflow Orchestration
@@ -110,8 +110,8 @@ shopping_pipeline
 
 Main tasks:
 
-load_raw
-run_dbt
+- load_raw
+- run_dbt
 
 The DAG is currently configured with:
 
@@ -126,10 +126,10 @@ It can be easily changed to a scheduled DAG later.
 
 The Python script:
 
-reads the CSV file
-connects to PostgreSQL
-creates the raw schema if needed
-refreshes the raw table contents
+- reads the CSV file
+- connects to PostgreSQL
+- creates the raw schema if needed
+- refreshes the raw table contents
 
 File: scripts/load_csv_to_db.py
 
@@ -137,8 +137,8 @@ File: scripts/load_csv_to_db.py
 
 dbt is used to create:
 
-a staging model for cleaning and standardization
-mart models for analytical outputs
+- a staging model for cleaning and standardization
+- mart models for analytical outputs
 
 Location: dbt/shopping_dbt/
 
@@ -146,8 +146,8 @@ Location: dbt/shopping_dbt/
 
 Airflow is used to orchestrate the pipeline so that:
 
-raw ingestion runs first
-dbt transformation runs second
+- raw ingestion runs first
+- dbt transformation runs second
 
 Location: airflow/dags/shopping_pipeline.py
 
@@ -155,9 +155,9 @@ Location: airflow/dags/shopping_pipeline.py
 
 PostgreSQL is used as the main data warehouse/storage layer for:
 
-raw tables
-staging views/tables
-mart views/tables
+- raw tables
+- staging views/tables
+- mart views/tables
 
 Location: postgres/docker-compose.yml
 
@@ -182,8 +182,8 @@ analytics2.stg_customer_shopping_trends
 
 dbt creates analytical outputs such as:
 
-analytics2.mart_sales_by_category
-analytics2.mart_sales_by_location
+- analytics2.mart_sales_by_category
+- analytics2.mart_sales_by_location
 
 ### Step 4: Airflow Orchestration
 
@@ -201,8 +201,8 @@ raw2.customer_shopping_trends
 ### Staging Output
 analytics2.stg_customer_shopping_trends
 ### Mart Outputs
-analytics2.mart_sales_by_category
-analytics2.mart_sales_by_location
+- analytics2.mart_sales_by_category
+- analytics2.mart_sales_by_location
 
 ---
 ## Screenshots
@@ -224,15 +224,15 @@ analytics2.mart_sales_by_location
 
 Through this project, I practiced:
 
-loading CSV data into PostgreSQL
-organizing data into raw, staging, and mart layers
-writing dbt models for transformation
-orchestrating a data pipeline with Airflow
-working with Docker-based services
-debugging file path, dependency, and container issues
-understanding the interaction between host machine, Docker containers, and database services
+- loading CSV data into PostgreSQL
+- organizing data into raw, staging, and mart layers
+- writing dbt models for transformation
+- orchestrating a data pipeline with Airflow
+- working with Docker-based services
+- debugging file path, dependency, and container issues
+- understanding the interaction between host machine, Docker containers, and database services
 
---
+--- 
 Author
 
 Winona Thea
