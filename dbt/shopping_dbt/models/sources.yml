@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: raw2
+    schema: raw2
+    tables:
+      - name: customer_shopping_trends

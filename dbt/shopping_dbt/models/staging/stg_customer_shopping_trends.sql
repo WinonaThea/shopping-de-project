@@ -1,0 +1,20 @@
+select
+    customer_id,
+    cast(age as integer) as age,
+    lower(trim(gender)) as gender,
+    lower(trim(item_purchased)) as item_purchased,
+    lower(trim(category)) as category,
+    cast(purchase_amount_usd as numeric) as purchase_amount_usd,
+    lower(trim(location)) as location,
+    lower(trim(size)) as size,
+    lower(trim(color)) as color,
+    lower(trim(season)) as season,
+    cast(review_rating as numeric) as review_rating,
+    lower(trim(subscription_status)) as subscription_status,
+    lower(trim(shipping_type)) as shipping_type,
+    lower(trim(discount_applied)) as discount_applied,
+    lower(trim(promo_code_used)) as promo_code_used,
+    cast(previous_purchases as integer) as previous_purchases,
+    lower(trim(payment_method)) as payment_method,
+    lower(trim(frequency_of_purchases)) as frequency_of_purchases
+from {{ source('raw2', 'customer_shopping_trends') }}

@@ -1,0 +1,45 @@
+#services:
+#  airflow:
+#    image: apache/airflow:2.9.3
+#    container_name: airflow-standalone
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    user: "${AIRFLOW_UID:-50000}:0" 
+#    volumes:
+#      - ./dags:/opt/airflow/dags
+#      - ./logs:/opt/airflow/logs
+#      - ./plugins:/opt/airflow/plugins
+#      - ./data:/opt/airflow/data
+#    environment:
+#      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+#    command: standalone
+
+services:
+  airflow:
+    image: apache/airflow:2.9.3
+    container_name: airflow-standalone
+    restart: always
+    ports:
+      - "8080:8080"
+    user: "${AIRFLOW_UID:-50000}:0"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./data:/opt/airflow/data
+      - /home/thea2701/project-data:/opt/airflow/project-data
+      - /home/thea2701/.dbt:/opt/airflow/.dbt
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - DB_HOST=host.docker.internal
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=admin123
+      - DB_NAME=mydb
+      - CSV_PATH=/opt/airflow/project-data/raw/shopping_trends_updated.csv
+      - DBT_HOST=host.docker.internal
+      - _PIP_ADDITIONAL_REQUIREMENTS=dbt-core dbt-postgres
+    command: standalone
